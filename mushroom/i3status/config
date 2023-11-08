@@ -1,0 +1,75 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+	output_format = "i3bar"
+	colors = true
+	markup = "pango"
+}
+
+
+order += "volume master"
+order += "tztime local"
+#order += "ipv6"
+order += "wireless _first_"
+order += "battery all"
+order += "ethernet _first_"
+#order += "disk /"
+#order += "load"
+#order += "memory"
+
+wireless _first_ {
+        format_up = "wifi %essid "
+        format_down = "wifi down"
+	color_good = "#ffff00"
+	color_degraded = "#ff4500"
+	color_bad = "#858bea"
+}
+
+ethernet _first_ {
+        format_up = "LAN (%speed)"
+        format_down = "LAN down"
+	color_good = "#edfc11"
+	color_degraded = "#edfca1"
+	color_bad = "#879efd"
+}
+
+battery all {
+        format = "<span foreground='#e850f0'>%status %percentage</span>"
+	format_down = "<span foreground='#4a507a'> [X] </span>"
+	status_chr = "=D∼"
+	status_bat = " ♊"
+	status_unk = "?"
+	status_full = "=D∼"
+}
+
+disk "/" {
+        format = "%avail"
+}
+
+load {
+        format = ""
+}
+
+memory {
+        format = "%used | %available"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+        format = "<span foreground='#11fa9b'>%I:%M%p <span foreground='#edfc11'>%d-%b-%Y</span> %a</span>"
+}
+
+volume master {
+	format = "<span foreground='#e850f0'> 🔊: %volume </span>"
+	format_muted = "<span foreground='#858bea'> 🔇: %volume </span>"
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+}

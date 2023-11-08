@@ -1,0 +1,22 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+PS1='[\u@\h \W]\$ '
+
+
+if [ -f ~/.bash_aliases ]; then
+	source ~/.bash_aliases
+fi
+
+
+
+PS1='\[\e[0;35m\]𓍊𓋼𓍊\[\e[m\] \[\e[38;5;43m\]\u\[\e[2;35m\]@\[\e[m\]\[\e[38;5;43m\]\h\[\e[38;5;32m\] \w \[\e[0;35m\]𓍊𓋼𓍊\[\e[m\] \[\033[38;5;155m\n '
+
+
+neofetch
