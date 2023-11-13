@@ -1,0 +1,5 @@
+insertColor = 255 100 255
+visualColor = 255 94 0
+disabledColor = 1 1 1
+textColor = 200 200 255
+selectedTextColor = 0 0 0
