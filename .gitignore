@@ -1,0 +1,17 @@
+**/binary/**
+**/build/**
+**/.ccls/**
+**/.ccls-cahce/**
+**/result/**
+
+customPackages/hexeon/binary
+customPackages/hexeon/binary/*
+
+customPackages/hexeon/build
+customPackages/hexeon/build/*
+
+customPackages/hexeon/.ccls-cache/*
+customPackages/hexeon/.ccls
+
+customPackages/hexeon/result
+customPackages/hexeon/result/*
