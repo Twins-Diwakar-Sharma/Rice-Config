@@ -43,7 +43,7 @@
         key = "<C-n>";
         options.silent = true;
         mode = "n";
-      },
+      }
       {
         action = ":CclsSwitchSourceHeader<CR>";
         key = "<leader>hs";
