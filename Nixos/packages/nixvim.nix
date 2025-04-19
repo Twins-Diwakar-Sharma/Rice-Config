@@ -16,6 +16,9 @@
       providers.wl-copy.enable = true;
     };
     
+    globals = {
+      mapleader = " ";
+    };
 
     opts = {
       number = true;
@@ -38,6 +41,12 @@
       {
         action = ":NvimTreeToggle<CR>";
         key = "<C-n>";
+        options.silent = true;
+        mode = "n";
+      },
+      {
+        action = ":CclsSwitchSourceHeader<CR>";
+        key = "<leader>hs";
         options.silent = true;
         mode = "n";
       }

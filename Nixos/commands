@@ -1,0 +1,7 @@
+// simple change of config
+nixos-rebuild switch --flake /etc/nixos#nyx 
+// here string after # is hostname
+
+// full update to update all packages
+nix flake update
+nixos-rebuild switch --flake /etc/nixos#nyx

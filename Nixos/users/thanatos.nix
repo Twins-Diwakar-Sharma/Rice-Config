@@ -33,13 +33,47 @@
         };
       };
 
+      home.file.".config/fastfetch/logo".text = 
+''
+         ___---___                    
+      .--         --.      
+    ./   ()      .-. \.
+   /   o    .   (   )  \
+  / .            '-'    \         
+ | ()    .  O         .  |      
+|                         |      
+|    o           ()       |
+|       .--.          O   |            
+ | .   |    |            |
+  \    `.__.'    o   .  /    
+   \                   /                   
+    `\  o    ()      /' 
+      `--___   ___--'
+            ---     
+'';
+
       programs.bash = {
         enable = true;
         bashrcExtra = ''
 export PS1="\[$(tput setaf 214)\][\u@\h:\w]$\[$(tput sgr0)\] "
+fastfetch --logo .config/fastfetch/logo
         '';
       };
       
+      
+      programs.waybar = rec {
+        style =  ''
+          #workspaces button {
+            padding: 0 2px;
+            color: #fdf6e3;
+          }
+          #workspaces button.active {
+            color: #262626;
+            background: #fe4545;
+          }
+        '';
+      };
+
 
   }; #end user
 
