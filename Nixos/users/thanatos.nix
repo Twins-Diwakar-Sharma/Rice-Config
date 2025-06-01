@@ -13,7 +13,7 @@
     users.thanatos = {
 			imports = [ ./home.nix ../customPackages/hexeon/hexeon.nix ];
 
-      home.stateVersion = "24.05";
+      home.stateVersion = "25.05";
 			home.homeDirectory = "/home/thanatos";
 
       programs.git = {

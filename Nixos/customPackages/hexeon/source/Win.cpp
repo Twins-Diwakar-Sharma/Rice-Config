@@ -49,7 +49,8 @@ void Win::createWindow()
 
 void Win::resize(GLFWwindow* window, int width, int height)
 {
-    glViewport(0,0,width,height);
+    //glViewport(0,0,width,height);
+    //std::cout << "WIDHT HEIGHT: " << width <<  " " << height << std::endl;
 }
 
 void Win::char_callback(GLFWwindow* window, unsigned int codepoint)

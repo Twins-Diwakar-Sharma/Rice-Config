@@ -50,12 +50,30 @@
         options.silent = true;
         mode = "n";
       }
+      {
+        action = "<cmd>Telescope live_grep<cr>";
+        key = "<leader>fw";
+        options.silent = true;
+        mode = "n";
+      }
+      {
+        action = "<cmd>Telescope find_files<cr>";
+        key = "<leader>ff";
+        options.silent = true;
+        mode = "n";
+      }
+      {
+        action = "<cmd>Telescope colorscheme<cr>";
+        key = "<leader>th";
+        options.silent = true;
+        mode = "n";
+      }
     ];
 
     plugins = {
       lualine = {
         enable = true; 
-        theme = "horizon";
+        settings.options.theme = "horizon";
       };
 
 
@@ -83,6 +101,43 @@
 
         servers = {
             ccls.enable = true;
+        };
+      };
+
+
+      flutter-tools = {
+        enable = true;
+        settings = {
+          widget_guides = {
+            enabled = true;
+          };
+          closing_tags = {
+            highlight = "Comment";
+          };
+          lsp = {
+            color.enabled = true;
+          };
+        };
+      };
+
+
+
+      telescope = {
+        enable = true;
+        extensions = {
+          live-grep-args = {
+            enable = true;
+          };
+          fzf-native = {
+            enable = true;
+          };
+        };
+        settings = {
+          pickers = {
+            colorscheme = {
+              theme = "dropdown";
+            };
+          };
         };
       };
 

@@ -14,7 +14,7 @@
     users.hypnos = {
 			imports = [ ./home.nix ../customPackages/hexeon/hexeon.nix ];
 
-      home.stateVersion = "24.05";
+      home.stateVersion = "25.05";
 			home.homeDirectory = "/home/hypnos";
 
       programs.git = {
@@ -72,7 +72,14 @@
       
       programs.waybar = rec {
         style =  ''
+         #workspaces button.active {
+          color: #262626;
+          background: #9cfa05;
+        }
+
+
         '';
+
       };
 
   }; #end user

@@ -4,14 +4,14 @@
 **/.ccls-cahce/**
 **/result/**
 
-customPackages/hexeon/binary
-customPackages/hexeon/binary/*
+Nixos/customPackages/hexeon/binary
+Nixos/customPackages/hexeon/binary/*
 
-customPackages/hexeon/build
-customPackages/hexeon/build/*
+Nixos/customPackages/hexeon/build
+Nixos/customPackages/hexeon/build/*
 
-customPackages/hexeon/.ccls-cache/*
-customPackages/hexeon/.ccls
+Nixos/customPackages/hexeon/.ccls-cache/*
+Nixos/customPackages/hexeon/.ccls
 
-customPackages/hexeon/result
-customPackages/hexeon/result/*
+Nixos/customPackages/hexeon/result
+Nixos/customPackages/hexeon/result/*

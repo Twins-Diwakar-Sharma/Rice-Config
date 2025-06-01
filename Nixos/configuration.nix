@@ -55,8 +55,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
-  sound.enable = true;
+  # Enable sound with pipewire. After 25.05 has no effect, nixos asking to remove it
+  #sound.enable = true; 
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -92,9 +93,10 @@
     gcc
     ccls
     pulseaudio
-    font-awesome
-    nerdfonts
     libreoffice
+    # for nixvim
+    air-formatter
+    google-chrome
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -122,14 +124,20 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   fonts.packages = with pkgs; [
-    font-awesome
-    (nerdfonts.override { fonts = [ "ComicShannsMono" ]; })
+    nerd-fonts.comic-shanns-mono
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
   ];
+
+#  fonts.packages = with pkgs; [
+#    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+#    fira-code
+#  ];
 
 }
