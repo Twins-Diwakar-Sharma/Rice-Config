@@ -41,8 +41,14 @@
     LC_TIME = "en_IN";
   };
 
-  hardware.opengl.enable = true;
-
+  hardware.opengl = { # hardware.graphics since NixOS 24.11
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      libvdpau-va-gl
+    ];
+  };
   
   # Enable i3
   #services.xserver.windowManager.i3.enable = true;
@@ -74,7 +80,8 @@
   # -- done using imports --
 
   # Install firefox.
-  programs.firefox.enable = true;
+#  programs.firefox.enable = true;
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -83,9 +90,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  # NOTE: donot put hyprland (wayland) specific packages here, use hyprland.nix for that
     wget
     git
-    lf
     glfw
     gnumake
     cmake
@@ -94,10 +101,28 @@
     ccls
     pulseaudio
     libreoffice
-    # for nixvim
-    air-formatter
     google-chrome
+    brave
+    slack
+    slack-cli
+    postgresql
+    devenv
+    bluez #bluetooth
+    zip
+    unzip
   ];
+  
+
+  # bluetooth configuration
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
+  #virtual machine
+
+  virtualisation = {
+    libvirtd.enable = true;
+  };
+  boot.kernelModules = [ "kvm-intel" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -113,7 +138,7 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [5432 1337 8000];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -128,16 +153,20 @@
 
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
+  # for devenv
+  nix.extraOptions = ''
+    extra-substituters = https://devenv.cachix.org
+    extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
+  '';
 
   fonts.packages = with pkgs; [
     nerd-fonts.comic-shanns-mono
-    nerd-fonts.fira-code
-    nerd-fonts.jetbrains-mono
+    nerd-fonts.daddy-time-mono
   ];
 
-#  fonts.packages = with pkgs; [
-#    (nerdfonts.override { fonts = [ "FiraCode" ]; })
-#    fira-code
-#  ];
+  # android
+  programs.adb.enable = true;
+
 
 }

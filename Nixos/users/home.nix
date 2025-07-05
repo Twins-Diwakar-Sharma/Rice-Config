@@ -5,6 +5,8 @@
    # pkgs.ccls
   ];
 
+  home.stateVersion = "25.05";
+
 	programs.home-manager.enable = true;
 
 	programs.bash = {
@@ -14,15 +16,5 @@
 		};
 	};
 
-  programs.lf = {
-    enable = true;
-    
-    settings = {
-      preview = true;
-      drawbox = true;
-      icons = true;
-    };
-
-  };
   
 }

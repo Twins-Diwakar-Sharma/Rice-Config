@@ -6,7 +6,7 @@
     isNormalUser = true;
     initialPassword = "password@123";
     description = "hypnos";
-    extraGroups = [ "networkManager" "wheel" "audio" "jackaudio"];
+    extraGroups = [ "networkManager" "wheel" "audio" "jackaudio" "kvm" "libvirtd" "adbusers" ];
   };
 
 
@@ -14,7 +14,6 @@
     users.hypnos = {
 			imports = [ ./home.nix ../customPackages/hexeon/hexeon.nix ];
 
-      home.stateVersion = "25.05";
 			home.homeDirectory = "/home/hypnos";
 
       programs.git = {
@@ -64,7 +63,8 @@
 
       programs.bash = {
         enable = true;
-        bashrcExtra = ''
+        bashrcExtra= ''
+          export PS1="\n\[\033[1;33m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]₹\[\033[0m\] "
           fastfetch --logo .config/fastfetch/logo
         '';
       };
@@ -76,8 +76,6 @@
           color: #262626;
           background: #9cfa05;
         }
-
-
         '';
 
       };

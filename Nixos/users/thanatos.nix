@@ -5,7 +5,7 @@
     isNormalUser = true;
     initialPassword = "password@123";
     description = "thanatos";
-    extraGroups = [ "networkManager" "wheel" "audio" "jackaudio"];
+    extraGroups = [ "networkManager" "wheel" "audio" "jackaudio" "kvm" "libvirtd" "adbusers" ];
   };
 
 
@@ -13,7 +13,6 @@
     users.thanatos = {
 			imports = [ ./home.nix ../customPackages/hexeon/hexeon.nix ];
 
-      home.stateVersion = "25.05";
 			home.homeDirectory = "/home/thanatos";
 
       programs.git = {
@@ -54,9 +53,10 @@
 
       programs.bash = {
         enable = true;
+        # old shit, use promptInit
         bashrcExtra = ''
-export PS1="\[$(tput setaf 214)\][\u@\h:\w]$\[$(tput sgr0)\] "
-fastfetch --logo .config/fastfetch/logo
+          export PS1="\n\[\033[1;36m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]₹\[\033[0m\] "
+          fastfetch --logo .config/fastfetch/logo
         '';
       };
       

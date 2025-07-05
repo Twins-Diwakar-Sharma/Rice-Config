@@ -51,7 +51,16 @@
         mode = "n";
       }
       {
-        action = "<cmd>Telescope live_grep<cr>";
+        action.__raw = '' function() require('telescope.builtin').live_grep({
+          layout_strategy = "vertical",
+          layout_config = {
+            vertical = {
+              prompt_position = "top",
+              mirror = true,
+            },
+            preview_cutoff = 0,
+          },
+        }) end '';
         key = "<leader>fw";
         options.silent = true;
         mode = "n";
@@ -65,6 +74,15 @@
       {
         action = "<cmd>Telescope colorscheme<cr>";
         key = "<leader>th";
+        options.silent = true;
+        mode = "n";
+      }
+      {
+        action.__raw = '' function()
+            local new_config = not vim.diagnostic.config().virtual_lines
+            vim.diagnostic.config({ virtual_lines = new_config })
+          end'';
+        key = "<leader>we";
         options.silent = true;
         mode = "n";
       }
@@ -140,9 +158,17 @@
           };
         };
       };
-
+      
+      lsp-lines = {
+        enable = true;
+      };
 
     }; # end of plugins
+
+    diagnostic.settings = {
+      virtual_lines = true;
+      virtual_text = false;
+    };
 
   }; # end of nixvim
 
