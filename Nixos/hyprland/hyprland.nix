@@ -43,7 +43,9 @@
     wayland.windowManager.hyprland = { 
       enable = true; 
       systemd.enable = true;
+      
       settings = {
+
         "$mod" = "SUPER";
         bind = [
 
@@ -84,7 +86,9 @@
           "$mod ALT, l, resizeactive, 160 0"
           "$mod ALT, k, resizeactive, 0 -160"
           "$mod ALT, j, resizeactive, 0 160"
-
+          
+          #closes (not kills) active window
+          "$mod SHIFT, w, killactive" 
 
           "$mod, Return, exec, foot"
           "$mod SHIFT, t, exec, tofi-drun --drun-launch=true"
@@ -106,6 +110,7 @@
           "noshadow, title:(Hex)"
         ];
       };
+
 
     };
 
@@ -160,7 +165,6 @@
         # Basic Settings
         set ignorecase true
         set icons true
-        set preview true
         set sixel true
 
         set previewer ~/.config/lf/preview.sh

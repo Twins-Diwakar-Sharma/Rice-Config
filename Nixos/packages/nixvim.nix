@@ -11,6 +11,8 @@
 
     enableMan = true;
 
+    colorscheme = "retrobox";
+
     clipboard = {
       #providers.xclip.enable = true;
       providers.wl-copy.enable = true;

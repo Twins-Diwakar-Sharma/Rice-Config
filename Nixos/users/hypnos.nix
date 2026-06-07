@@ -20,6 +20,9 @@
         enable = true;
         userName = "Divyanshu Sharma";
         userEmail = "twins-divyanshu-sharma@github.com";
+        extraConfig = {
+          core.editor = "nvim"; # Or "vim", "nano", "code --wait", etc.
+        };
       };
 
 
@@ -36,30 +39,22 @@
 
       home.file.".config/fastfetch/logo".text = 
       ''
-                      ___
-                _,-'""   """"`--.
-             ,-'          __,,-- \
-           ,'    __,--""""dF      )
-          /   .-"Hb_,--""dF      /
-        ,'       _Hb ___dF"-._,-'
-      ,'      _,-""""   ""--..__
-     (     ,-'                  `.
-      `._,'     _   _             ;
-       ,'     ,' `-'Hb-.___..._,-'
-       \    ,'"Hb.-'HH`-.dHF"
-        `--'   "Hb  HH  dF"
-                "Hb HH dF
-                 "HbHHdF
-                  |HHHF
-                  |HHH|
-                  |HHH|
-                  |HHH|
-                  |HHH|
-                  dHHHb
-                .dFd|bHb.               o
-      o       .dHFdH|HbTHb.          o /
-\  Y  |  \__,dHHFdHH|HHhoHHb.______  Y
-########################################## '';
+                                         _.oo.
+                 _.u[[/;:,.         .odMMMMMM'
+              .o888UU[[[/;:-.  .o@P^    MMM^
+             oN88888UU[[[/;::-.        dP^
+            dNMMNN888UU[[[/;:--.   .o@P^
+           ,MMMMMMN888UU[[/;::-. o@^
+           NNMMMNN888UU[[[/~.o@P^
+           888888888UU[[[/o@^-..
+          oI8888UU[[[/o@P^:--..
+       .@^  YUU[[[/o@^;::---..
+     oMP     ^/o@P^;:::---..
+  .dMMM    .o@^ ^;::---...
+ dMMMMMMM@^`       `^^^^
+YMMMUP^
+ ^^
+'';
 
       programs.bash = {
         enable = true;
@@ -72,9 +67,19 @@
       
       programs.waybar = rec {
         style =  ''
+         #workspaces button{
+          color: #9cfa05;
+          background: #262626;
+        }
+
          #workspaces button.active {
           color: #262626;
           background: #9cfa05;
+        }
+
+        #workspaces button.hover{
+          color: #262626;
+          background: #6acc02;
         }
         '';
 

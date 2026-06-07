@@ -19,6 +19,9 @@
         enable = true;
         userName = "Diwakar Sharma";
         userEmail = "twins-diwakar-sharma@github.com";
+        extraConfig = {
+          core.editor = "nvim"; # Or "vim", "nano", "code --wait", etc.
+        };
       };
 
 
