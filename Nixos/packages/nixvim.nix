@@ -99,7 +99,7 @@
 
       nvim-tree = {
         enable = true; 
-        disableNetrw = true;
+        disable_netrw = true;
         openOnSetup = true;
       };
 
@@ -125,21 +125,21 @@
       };
 
 
-      flutter-tools = {
-        enable = true;
-        settings = {
-          widget_guides = {
-            enabled = true;
-          };
-          closing_tags = {
-            highlight = "Comment";
-          };
-          lsp = {
-            color.enabled = true;
-          };
-        };
-      };
-
+##-->      flutter-tools = {
+##-->        enable = true;
+##-->        settings = {
+##-->          widget_guides = {
+##-->            enabled = true;
+##-->          };
+##-->          closing_tags = {
+##-->            highlight = "Comment";
+##-->          };
+##-->          lsp = {
+##-->            color.enabled = true;
+##-->          };
+##-->        };
+##-->      };
+##-->
 
 
       telescope = {

@@ -2,10 +2,10 @@
     description = "Configuration Flake";
 
     inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-        home-manager.url = "github:nix-community/home-manager/release-25.05";
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+        home-manager.url = "github:nix-community/home-manager/release-26.05";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
-        nixvim.url = "github:nix-community/nixvim/nixos-25.05";
+        nixvim.url = "github:nix-community/nixvim/nixos-26.05";
         nixvim.inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -11,17 +11,33 @@
 
 
   home-manager = {
+
+
+
     users.hypnos = {
 			imports = [ ./home.nix ../customPackages/hexeon/hexeon.nix ];
 
 			home.homeDirectory = "/home/hypnos";
+      
+      services.wpaperd = {
+        enable = true;
+        settings = {
+          eDP-1 = {
+            path = "/home/hypnos/Pictures/wallpapers/";
+            duration = "30m";
+            sorting = "ascending";
+          };
+        };
+      };
 
       programs.git = {
         enable = true;
-        userName = "Divyanshu Sharma";
-        userEmail = "twins-divyanshu-sharma@github.com";
-        extraConfig = {
+        settings = {
           core.editor = "nvim"; # Or "vim", "nano", "code --wait", etc.
+          user = {
+            name = "Divyanshu Sharma";
+            email = "twins-divyanshu-sharma@github.com";
+          };
         };
       };
 

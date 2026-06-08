@@ -41,7 +41,7 @@
     LC_TIME = "en_IN";
   };
 
-  hardware.opengl = { # hardware.graphics since NixOS 24.11
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
@@ -102,7 +102,7 @@
     pulseaudio
     libreoffice
     google-chrome
-    brave
+    ##--> brave
     slack
     slack-cli
     postgresql
@@ -119,10 +119,10 @@
 
   #virtual machine
 
-  virtualisation = {
-    libvirtd.enable = true;
-  };
-  boot.kernelModules = [ "kvm-intel" ];
+##-->  virtualisation = {
+##-->    libvirtd.enable = true;
+##-->  };
+##-->  boot.kernelModules = [ "kvm-intel" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -138,27 +138,41 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [5432 1337 8000];
+  ##--> networking.firewall.allowedTCPPorts = [5432 1337 8000];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+
+  # This option defines the first version of NixOS you have installed on this particular machine,
+  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
+  #
+  # Most users should NEVER change this value after the initial install, for any reason,
+  # even if you've upgraded your system to a new NixOS release.
+  #
+  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
+  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
+  # to actually do that.
+  #
+  # This value being lower than the current NixOS release does NOT mean your system is
+  # out of date, out of support, or vulnerable.
+  #
+  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
+  # and migrated your data accordingly.
+  #
+  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+  system.stateVersion = "26.05"; # Did you read the comment?
 
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   # for devenv
-  nix.extraOptions = ''
-    extra-substituters = https://devenv.cachix.org
-    extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
-  '';
+##-->  nix.extraOptions = ''
+##-->    extra-substituters = https://devenv.cachix.org
+##-->    extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
+##-->  '';
+##-->
+
 
   fonts.packages = with pkgs; [
     nerd-fonts.comic-shanns-mono
@@ -166,7 +180,6 @@
   ];
 
   # android
-  programs.adb.enable = true;
-
+##-->  programs.adb.enable = true;
 
 }

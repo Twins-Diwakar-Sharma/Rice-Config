@@ -19,7 +19,7 @@
 
   environment.systemPackages =
   let
-    hexeon = (pkgs.callPackage ../customPackages/hexeon/default.nix {inherit pkgs;} ) ;
+     hexeon = (pkgs.callPackage ../customPackages/hexeon/default.nix {inherit pkgs;} ) ;
   in
   [
     (pkgs.waybar.overrideAttrs (oldAttrs: {
@@ -28,25 +28,26 @@
     )
     pkgs.foot
     pkgs.tofi # backup if hexeon fails
-    pkgs.hyprpaper
     pkgs.wl-clipboard
     hexeon
     pkgs.hyprshot # screenshot
     pkgs.lf # file explorer
     pkgs.chafa # image previewer for lf
+    pkgs.wpaperd
   ];
 
   home-manager.useGlobalPkgs = true;
 
 
   home-manager.sharedModules = [{
+
     wayland.windowManager.hyprland = { 
       enable = true; 
       systemd.enable = true;
       
       settings = {
+        "$mod" = "SUPER"; 
 
-        "$mod" = "SUPER";
         bind = [
 
           # workspace
@@ -101,18 +102,24 @@
           "$mod, F, fullscreen"
         ];
 
-        windowrulev2 = [
-          "noborder, title:(hexeon)"
-          "noblur, title:(hexeon)"
-          "noshadow, title:(hexeon)"
-          "noborder, title:(Hex)"
-          "noblur, title:(Hex)"
-          "noshadow, title:(Hex)"
+
+        windowrule = [
+          {
+            name = "hexeon-clean-look"; # name must be first
+            match.title = "(hexeon)";
+            no_blur = true;
+            float = true;
+            no_shadow = true;
+            border_size = 0;
+            decorate = false;
+            focus_on_activate = true;
+          }
         ];
+
       };
 
 
-    };
+    }; ## hyprland ends
 
     programs.foot = {
       enable = true;
@@ -120,20 +127,13 @@
         main = {
           font = "DaddyTimeMono Nerd Font Mono:size=12";
         };
-        colors = {
+        colors-dark = {
           alpha = 0.8;
         };
       };
     };
 
  
-    services.hyprpaper = {
-      enable = true;
-      settings = {
-        preload = [ "~/.background.png" ];
-        wallpaper = [ " , ~/.background.png " ];
-      };
-    };
 
 
     home.file.".config/lf/preview.sh" = { 

@@ -10,17 +10,31 @@
 
 
   home-manager = {
+
     users.thanatos = {
 			imports = [ ./home.nix ../customPackages/hexeon/hexeon.nix ];
 
 			home.homeDirectory = "/home/thanatos";
 
+      services.wpaperd = {
+        enable = true;
+        settings = {
+          eDP-1 = {
+            path = "/home/thanatos/Pictures/wallpapers/";
+            duration = "30m";
+            sorting = "ascending";
+          };
+        };
+      };
+
       programs.git = {
         enable = true;
-        userName = "Diwakar Sharma";
-        userEmail = "twins-diwakar-sharma@github.com";
-        extraConfig = {
+        settings = {
           core.editor = "nvim"; # Or "vim", "nano", "code --wait", etc.
+          user = {
+            name = "Diwakar Sharma";
+            email = "twins-diwakar-sharma@github.com";
+          };
         };
       };
 
