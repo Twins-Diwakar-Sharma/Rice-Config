@@ -6,8 +6,6 @@
     args.home-manager.nixosModules.home-manager
   ];
 
-
-
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -34,12 +32,14 @@
     pkgs.lf # file explorer
     pkgs.chafa # image previewer for lf
     pkgs.wpaperd
+
+    pkgs.oreo-cursors-plus
   ];
 
   home-manager.useGlobalPkgs = true;
 
 
-  home-manager.sharedModules = [{
+  home-manager.sharedModules = [{ 
 
     wayland.windowManager.hyprland = { 
       enable = true; 
@@ -129,6 +129,7 @@
         };
         colors-dark = {
           alpha = 0.8;
+          background = "121212";
         };
       };
     };

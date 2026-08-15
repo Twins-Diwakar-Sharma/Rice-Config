@@ -24,8 +24,8 @@
         settings = {
           eDP-1 = {
             path = "/home/hypnos/Pictures/wallpapers/";
-            duration = "30m";
-            sorting = "ascending";
+            duration = "15m";
+            sorting = "random";
           };
         };
       };
@@ -77,6 +77,9 @@ YMMMUP^
         bashrcExtra= ''
           export PS1="\n\[\033[1;33m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]₹\[\033[0m\] "
           fastfetch --logo .config/fastfetch/logo
+          lfcd () {
+            cd "$(command lf -print-last-dir "$@")"
+          }
         '';
       };
       

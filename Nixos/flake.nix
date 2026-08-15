@@ -33,6 +33,7 @@
                   ./packages/nixvim.nix
                   #./i3.nix
                   ./hyprland/hyprland.nix
+                  ./niri/niri.nix
                   ./users/thanatos.nix
                   ./users/hypnos.nix
                 ];

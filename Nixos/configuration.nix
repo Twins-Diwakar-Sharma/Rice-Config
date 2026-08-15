@@ -110,6 +110,11 @@
     bluez #bluetooth
     zip
     unzip
+    kdePackages.okular
+    glslang
+    vulkan-tools
+    vulkan-headers
+    vulkan-loader
   ];
   
 

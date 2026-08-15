@@ -11,7 +11,6 @@
 
     enableMan = true;
 
-    colorscheme = "retrobox";
 
     clipboard = {
       #providers.xclip.enable = true;
@@ -31,13 +30,20 @@
       clipboard = "unnamedplus";
     };
 
-    colorschemes.ayu = {
-      enable = true;
-    };
-
     extraPlugins = with pkgs.vimPlugins; [
       nvim-web-devicons
+      cyberdream-nvim
     ];
+
+#    colorschemes.ayu = {
+#      enable = true;
+#    };
+
+    colorschmemes = {
+      cyberdream.enable = true; 
+    };
+
+    colorscheme = "catppuccin";
 
     keymaps = [
       {
@@ -93,9 +99,8 @@
     plugins = {
       lualine = {
         enable = true; 
-        settings.options.theme = "horizon";
+        #settings.options.theme = "horizon";
       };
-
 
       nvim-tree = {
         enable = true; 
@@ -105,14 +110,14 @@
 
       treesitter = {
           enable = true;
-
-          grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+          grammarPackages = with config.programs.nixvim.plugins.treesitter.package.builtGrammars; [
             make
             markdown
             cmake
             c
             cpp
             glsl
+            nix
           ];
       };
 
@@ -123,7 +128,10 @@
             ccls.enable = true;
         };
       };
-
+      
+      mini-completion = {
+        enable = true;
+      };
 
 ##-->      flutter-tools = {
 ##-->        enable = true;
