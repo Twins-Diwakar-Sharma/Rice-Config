@@ -40,7 +40,9 @@ YMMMUP^
     };
 
     bashrcExtra= ''
-      export PS1="\n\[\033[1;33m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]₹\[\033[0m\] "
+      export PS1='\[\e[37m\]✦━┫▬▬\[\e[94m\]\u\[\e[37m\]▬▬\[\e[32m\]\h\[\e[37m\]▬▬▬▬\[\e[36m\]\w\[\e[37m\]▬▬▬▸\n\[\e[0m\]'
+
+      export LS_COLORS="''${LS_COLORS}:di=93"
       fastfetch --logo .config/fastfetch/logo
       lfcd () {
         cd "$(command lf -print-last-dir "$@")"
