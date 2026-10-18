@@ -1,12 +1,11 @@
 #include "Engine.h"
 
-void Engine::modifyPath(std::string& path)
-{
-
-}
-
 Engine::Engine() : window()
 {
+
+    std::string home = std::getenv("HOME");
+    pathsForIcons[1] = home + "/.nix-profile/share/icons/";
+
     std::string path = std::getenv("PATH");
     Config config;
     if(!config.failedLoading())
@@ -398,9 +397,17 @@ void Engine::updateHexagonStrings()
 
         const int bufferLen = 256;
         char res[bufferLen];
-    for(unsigned int i=0; i<pathList.size(); i++)
+    
+    std::string command("find ");
+    for(unsigned int i=0; i<pathList.size(); i++) 
     {
-        std::string command("find " + pathList[i] + " -name *" + searchString + "*");  
+      command += pathList[i] + " ";
+    }
+    command += "-name *" + searchString + "*";
+
+    //for(unsigned int i=0; i<pathList.size(); i++)
+    //{
+        //std::string command("find " + pathList[i] + " -name *" + searchString + "*");  
         fp = popen(command.c_str(), "r");
         
         while(fgets(res, bufferLen, fp) != NULL)
@@ -425,7 +432,7 @@ void Engine::updateHexagonStrings()
         }
 
         status = pclose(fp);
-    }
+    //}
 
     std::sort(progName.begin(),progName.end());
     std::vector<std::string> sortedProgName;
@@ -461,11 +468,11 @@ void Engine::updateHexagonStrings()
         if(i < sortedProgName.size() )
         {
           // find icon 
-          std::string command("find " + iconsPath + " -name *" + sortedProgName[i] + "*.png -printf '%s\t%p\n' | sort -nr | cut -f2-");
+          //std::string command("find " + iconsPath + " -name *" + sortedProgName[i] + "*.png -printf '%s\t%p\n' | sort -nr | cut -f2-");
+          std::string command("find " + pathsForIcons[0] + " " + pathsForIcons[1] + " -name *" + sortedProgName[i] + "*.png -printf '%s\t%p\n' | sort -nr | cut -f2-");
 
 
           fp = popen(command.c_str(), "r");
-
 
           std::string iconPathStr("");
           if(fgets(res, bufferLen, fp) != NULL)

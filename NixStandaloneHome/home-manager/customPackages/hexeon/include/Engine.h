@@ -99,9 +99,11 @@ class Engine
 
         //std::string iconsPath = "/usr/share/icons/";
         std::string iconsPath = "/run/current-system/sw/share/icons/";
+        std::string pathsForIcons[2] = {
+          "/run/current-system/sw/share/icons/",
+          ""
+        };
 
-
-        void modifyPath(std::string& path);
 };
 
 
