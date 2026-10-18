@@ -1,5 +1,10 @@
 #include "Engine.h"
 
+void Engine::modifyPath(std::string& path)
+{
+
+}
+
 Engine::Engine() : window()
 {
     std::string path = std::getenv("PATH");
@@ -25,12 +30,16 @@ Engine::Engine() : window()
       if(path[end] == ':')
       {
         std::string t = path.substr(start,end-start);
+        if(t.back() != '/')
+          t += '/';
         pathList.push_back(t);
         start = end+1;
       }
       else if(end == path.size() -1)
       {
           std::string t = path.substr(start,end-start+1);
+          if(t.back() != '/')
+            t += '/';
           pathList.push_back(t);
       }
     }
